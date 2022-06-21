@@ -8,7 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+<<<<<<< HEAD
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+=======
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+>>>>>>> 808a0f2c48f32e187e272951b9469a98fc8343c9
 
 
 @SpringBootTest
