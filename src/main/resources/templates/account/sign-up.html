@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">LOGO</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <form class="justify-content-start" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -19,10 +19,10 @@
 
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Login</a>
+                <a class="nav-link active" aria-current="page" href="#" th:href="@{/login}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" >Sign Up</a>
+                <a class="nav-link" href="#" th:href="@{/sign-up}">Sign Up</a>
             </li>
         </ul>
     </div>
@@ -38,10 +38,10 @@
             <div class="form-group mb-3">
                 <label for="nickname">닉네임</label>
                 <input id="nickname" type="text" th:field="*{nickname}" class="form-control"
-                       placeholder="whiteship" aria-describedby="nicknameHelp" required minlength="3" maxlength="20">
+                       placeholder="nickname" aria-describedby="nicknameHelp" required minlength="3" maxlength="20">
                 <small id="nicknameHelp" class="form-text text-muted">
                     공백없이 문자와 숫자로만 3자 이상 20자 이내로 입력하세요. 가입 후에 변경할 수 있습니다.
-                </small>
+                </small><br>
                 <small class="invalid-feedback">닉네임을 입력하세요.</small>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname Error</small>
             </div>
@@ -52,7 +52,7 @@
                        placeholder="your@email.com" aria-describedby="emailHelp" required>
                 <small id="emailHelp" class="form-text text-muted">
                     사용자의 이메일은 공개되지 않습니다.
-                </small>
+                </small><br>
                 <small class="invalid-feedback">이메일을 입력하세요.</small>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
             </div>
@@ -63,7 +63,7 @@
                        aria-describedby="passwordHelp" required minlength="8" maxlength="50">
                 <small id="passwordHelp" class="form-text text-muted">
                     8자 이상 50자 이내로 입력하세요. 영문자, 숫자, 특수기호를 사용할 수 있으며 공백은 사용할 수 없습니다.
-                </small>
+                </small><br>
                 <small class="invalid-feedback">패스워드를 입력하세요.</small>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</small>
             </div>
