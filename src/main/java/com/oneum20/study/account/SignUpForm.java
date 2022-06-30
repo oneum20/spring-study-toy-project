@@ -1,4 +1,4 @@
-package com.oneum20.study.domain;
+package com.oneum20.study.account;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
