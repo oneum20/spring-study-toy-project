@@ -1,5 +1,6 @@
 package com.oneum20.study.account;
 
+import com.oneum20.study.domain.Account;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.BDDMockito.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -63,7 +64,10 @@ public class AccountControllerTest {
         ).andExpect(status().is3xxRedirection())
          .andExpect(view().name("redirect:/"));
 
-        assertTrue(accountRepository.existsByEmail("test@email.com"));
+        Account account = accountRepository.findByEmail("test@email.com");
+        assertNotNull(account);
+
+        assertNotNull(account.getEmailCheckToken());
         then(javaMailSender).should().send(any(SimpleMailMessage.class));
 
     }
