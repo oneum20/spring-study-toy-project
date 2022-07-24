@@ -4,6 +4,7 @@ import com.oneum20.study.domain.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -24,6 +25,7 @@ public class AccountController {
     private final AccountRepository accountRepository;
     private final SignUpFormValidator signUpFormValidator;
     private final AccountService accountService;
+
 
 
     @InitBinder("signUpForm")
