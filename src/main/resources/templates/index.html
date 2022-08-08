@@ -8,7 +8,9 @@
 <body>
 
 <nav th:replace="fragments.html :: main-nav"></nav>
-
+<div class="alert alert-warning" role="alert" th:if="${account != null && !account.emailVerified}">
+    스프링 스터디에 가입을 완료하려면 <a href=""# th:href="@{/check-email}" class="alert-link">계정 인증 이메일을 확인</a>하세요
+</div>
 <div class="container">
     <div class="py-5 text-center">
         <h2>스프링 스터디</h2>
@@ -19,7 +21,6 @@
 
 <footer th:replace="fragments.html :: main-footer"></footer>
 
-<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

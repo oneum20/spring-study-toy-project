@@ -1,6 +1,7 @@
 package com.oneum20.study.account;
 
 import com.oneum20.study.domain.Account;
+import com.oneum20.study.main.CurrentUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -51,6 +52,14 @@ public class AccountController {
         return "redirect:/";
     }
 
+    @GetMapping("/check-email")
+    public String checkEmail(@CurrentUser Account account, Model model){
+
+        model.addAttribute("email", account.getEmail());
+
+        return "account/check-email";
+    }
+
     @GetMapping("/check-email-token")
     public String checkEmailToken(String token, String email, Model model){
         Account account = accountRepository.findByEmail(email);
@@ -73,6 +82,18 @@ public class AccountController {
 
 
         return view;
+    }
+
+    @GetMapping("/resend-confirm-email")
+    public String resendConfirmEmail(@CurrentUser Account account, Model model){
+        if(!account.canSendConfirmEmail()){
+            model.addAttribute("error", "메일은 한 시간에 한 번만 전송할 수 있습니다.");
+            model.addAttribute("email", account.getEmail());
+
+            return "account/check-email";
+        }
+
+        return "redirect:/";
     }
 
 
