@@ -2,8 +2,10 @@ package com.oneum20.study.settings;
 
 import com.oneum20.study.domain.Account;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Profile {
     private String bio;
 
